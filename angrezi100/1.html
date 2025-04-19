@@ -1,501 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- TAGS -->
     <title>Day 1 - Angrezi100 Challenge | CATalyst CAT Prep by Crookshanks Academy</title>
-    <meta name="description" content="Kickstart your CAT preparation with Day 1 of the Angrezi100 Challenge by Crookshanks Academy. Boost your English skills for CAT with expert-curated lessons and tips. Join the CATalyst journey now!">
+    <meta name="description"
+        content="Kickstart your CAT preparation with Day 1 of the Angrezi100 Challenge by Crookshanks Academy. Boost your English skills for CAT with expert-curated lessons and tips. Join the CATalyst journey now!">
     <meta property="og:title" content="Day 1 - Angrezi100 Challenge | CATalyst CAT Prep by Crookshanks Academy">
-    <meta property="og:description" content="Start your CAT prep journey with Day 1 of the Angrezi100 Challenge. Build strong English skills with expert guidance from Crookshanks Academy.">
+    <meta property="og:description"
+        content="Start your CAT prep journey with Day 1 of the Angrezi100 Challenge. Build strong English skills with expert guidance from Crookshanks Academy.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://cat.crookshanksacademy.com/angrezi100">
     <meta property="og:image" content="https://cat.crookshanksacademy.com/assets/angrezi100.jpg">
     <link rel="icon" href="https://cat.crookshanksacademy.com/favicon.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9887862710118026"
+        crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9887862710118026"
+        crossorigin="anonymous"></script>
+    <script async src="https://fundingchoicesmessages.google.com/i/pub-9887862710118026?ers=1"
+        nonce="WDEhggFtERn9PXG4p5_dPA"></script>
+    <script
+        nonce="WDEhggFtERn9PXG4p5_dPA">(function () { function signalGooglefcPresent() { if (!window.frames['googlefcPresent']) { if (document.body) { const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe); } else { setTimeout(signalGooglefcPresent, 0); } } } signalGooglefcPresent(); })();</script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SNMKKCB31B"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-    
-    <style>
-        :root {
-            --ease: cubic-bezier(0.19, 1, 0.22, 1);
-            --correct: #e6f7e6;
-            --correct-border: #2e7d32;
-            --incorrect: #ffebee;
-            --incorrect-border: #c62828;
-            --bg-color: white;
-            --text-color: black;
-            --border-color: #eee;
-            --footer-bg: #f9f9f9;
-            --base-font-size: 1rem;
-            --question-font-size: 1.1rem;
-            --article-font-size: 1rem;
-            --title-font-size: 1.75rem;
-        }
+        gtag('config', 'G-SNMKKCB31B');
+    </script>
 
-        .dark-mode {
-            --bg-color: #121212;
-            --text-color: #f5f5f5;
-            --border-color: #333;
-            --footer-bg: #1e1e1e;
-            --correct: #1b5e20;
-            --correct-border: #4c8c4a;
-            --incorrect: #7f0000;
-            --incorrect-border: #c62828;
-        }
 
-        /* Font size presets */
-        .font-small {
-            --base-font-size: 0.875rem;
-            --question-font-size: 1rem;
-            --article-font-size: 0.875rem;
-            --title-font-size: 1.5rem;
-        }
 
-        .font-medium {
-            --base-font-size: 1rem;
-            --question-font-size: 1.1rem;
-            --article-font-size: 1rem;
-            --title-font-size: 1.75rem;
-        }
 
-        .font-large {
-            --base-font-size: 1.125rem;
-            --question-font-size: 1.25rem;
-            --article-font-size: 1.125rem;
-            --title-font-size: 2rem;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        }
-        
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            min-height: 100vh;
-            line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            font-size: var(--base-font-size);
-        }
-        
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-            border-bottom: 1px solid var(--border-color);
-            position: sticky;
-            top: 0;
-            background: var(--bg-color);
-            z-index: 10;
-        }
-        
-        .timer-container {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        
-        .timer {
-            font-size: var(--base-font-size);
-            font-weight: 500;
-            cursor: pointer;
-        }
-        
-        .settings-icon {
-            cursor: pointer;
-            font-size: 1.2rem;
-        }
-        
-        .back-button {
-            background: none;
-            border: none;
-            font-size: var(--base-font-size);
-            font-weight: 500;
-            cursor: pointer;
-            text-decoration: underline;
-            color: var(--text-color);
-        }
-        
-        .main-content {
-            flex: 1;
-            display: flex;
-            overflow: auto;
-        }
-        
-        .container {
-            display: flex;
-            flex: 1;
-            min-width: 0;
-            max-width: 1200px;
-            margin: 0 auto;
-            width: 100%;
-            padding: 2rem;
-        }
-        
-        .article-section {
-            flex: 1;
-            padding-right: 2rem;
-            overflow-y: auto;
-        }
-        
-        .quiz-section {
-            flex: 1;
-            padding-left: 2rem;
-            border-left: 1px solid var(--border-color);
-            overflow-y: auto;
-        }
-        
-        .article-title {
-            font-size: var(--title-font-size);
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            line-height: 1.3;
-        }
-        
-        .article-content {
-            font-size: var(--article-font-size);
-            margin-bottom: 2rem;
-        }
-        
-        .article-content p {
-            margin-bottom: 1.5rem;
-        }
-        
-        /* AdSense Ad Placeholders */
-        .ad-container {
-            margin: 2rem 0;
-            background: var(--footer-bg);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100px;
-            border: 1px dashed var(--border-color);
-        }
-        
-        .ad-label {
-            color: var(--text-color);
-            opacity: 0.7;
-            font-size: 0.8rem;
-        }
-        
-        .question-container {
-            margin-bottom: 2rem;
-        }
-        
-        .question {
-            font-size: var(--question-font-size);
-            font-weight: 500;
-            margin-bottom: 1rem;
-        }
-        
-        .options {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 0.75rem;
-        }
-        
-        .option {
-            padding: 0.75rem 1rem;
-            border: 1px solid var(--border-color);
-            cursor: pointer;
-            transition: all 0.2s var(--ease);
-            font-size: var(--base-font-size);
-        }
-        
-        .option:hover {
-            background: var(--footer-bg);
-        }
-        
-        .option.selected {
-            border-color: var(--text-color);
-            background: var(--footer-bg);
-        }
-        
-        .option.correct {
-            background-color: var(--correct);
-            border-color: var(--correct-border);
-        }
-        
-        .option.incorrect {
-            background-color: var(--incorrect);
-            border-color: var(--incorrect-border);
-        }
-        
-        .submit-btn {
-            width: 100%;
-            padding: 1rem;
-            background: var(--text-color);
-            color: var(--bg-color);
-            border: none;
-            font-weight: 500;
-            cursor: pointer;
-            transition: opacity 0.2s var(--ease);
-            margin-top: 1rem;
-            font-size: var(--base-font-size);
-        }
-        
-        .submit-btn:hover {
-            opacity: 0.9;
-        }
-        
-        .submit-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-        
-        .result-container {
-            display: none;
-            padding: 1.5rem;
-            border: 1px solid var(--border-color);
-            margin-top: 2rem;
-        }
-        
-        .result-title {
-            font-size: var(--question-font-size);
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        
-        .score {
-            font-size: var(--title-font-size);
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        
-        .review {
-            margin-bottom: 1rem;
-            font-size: var(--article-font-size);
-        }
-        
-        .time-taken {
-            opacity: 0.7;
-            font-size: var(--base-font-size);
-        }
-        
-        /* Settings Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 20;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .modal-content {
-            background-color: var(--bg-color);
-            padding: 2rem;
-            border-radius: 8px;
-            width: 90%;
-            max-width: 400px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-        }
-        
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-        
-        .modal-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-        }
-        
-        .close-modal {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--text-color);
-        }
-        
-        .setting-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .setting-label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-        
-        .font-size-controls {
-            display: flex;
-            gap: 0.5rem;
-        }
-        
-        .font-size-btn {
-            padding: 0.5rem 1rem;
-            background: var(--footer-bg);
-            border: 1px solid var(--border-color);
-            cursor: pointer;
-        }
-        
-        .font-size-btn.active {
-            background: var(--text-color);
-            color: var(--bg-color);
-        }
-        
-        .toggle-switch {
-            position: relative;
-            display: inline-block;
-            width: 50px;
-            height: 24px;
-        }
-        
-        .toggle-switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-        
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            transition: .4s;
-            border-radius: 24px;
-        }
-        
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 16px;
-            width: 16px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            transition: .4s;
-            border-radius: 50%;
-        }
-        
-        input:checked + .slider {
-            background-color: #2196F3;
-        }
-        
-        input:checked + .slider:before {
-            transform: translateX(26px);
-        }
-        
-        .modal-footer {
-            display: flex;
-            justify-content: flex-end;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-        
-        .modal-btn {
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        
-        .reset-btn {
-            background-color: #ff4444;
-            color: white;
-        }
-        
-        .save-btn {
-            background-color: var(--text-color);
-            color: var(--bg-color);
-        }
-        
-        /* Footer Styles */
-        .footer {
-            background-color: var(--footer-bg);
-            padding: 2rem;
-            border-top: 1px solid var(--border-color);
-        }
-        
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-        }
-        
-        .footer-logo {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        
-        .footer-links {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-        
-        .footer-links a {
-            color: var(--text-color);
-            opacity: 0.8;
-            text-decoration: none;
-            transition: opacity 0.2s var(--ease);
-        }
-        
-        .footer-links a:hover {
-            opacity: 1;
-            text-decoration: underline;
-        }
-        
-        .footer-bottom {
-            text-align: center;
-            margin-top: 2rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border-color);
-            opacity: 0.7;
-            font-size: 0.8rem;
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-                padding: 1.5rem;
-            }
-            
-            .article-section {
-                padding-right: 0;
-                padding-bottom: 2rem;
-                border-bottom: 1px solid var(--border-color);
-                border-right: none;
-            }
-            
-            .quiz-section {
-                padding-left: 0;
-                padding-top: 2rem;
-                border-left: none;
-            }
-            
-            .header {
-                padding: 1rem;
-                flex-direction: row-reverse;
-            }
-            
-            .footer-container {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body>
     <div class="header">
         <button class="back-button">← Back</button>
@@ -504,46 +50,79 @@
             <i class="fas fa-cog settings-icon" id="settings-icon"></i>
         </div>
     </div>
-    
+
     <div class="main-content">
         <div class="container">
             <div class="article-section">
                 <h1 class="article-title" id="article-title">Why would US make English an Official Language?</h1>
-                <div class="article-content" id="article-content"><em>Source: https://aeon.co/essays/why-would-the-us-make-english-an-official-language</em></div>
-                
-                
-                
+                <div class="article-content" id="article-content"><em>Source:
+                        https://aeon.co/essays/why-would-the-us-make-english-an-official-language</em></div>
+
+
+
                 <div class="article-content" id="article-content">
                     <p>
-                        
-                        Immigrants’ adoption of English as their primary language is one measure of assimilation into the larger United States society. Generally languages define social groups and provide justification for social structures. Hence, a distinctive language sets a cultural group off from the dominant language group. Throughout United States history this pattern has resulted in one consistent, unhappy consequence, discrimination against members of the cultural minority. Language differences provide both a way to rationalize subordination and a ready means for achieving it.
+
+                        Immigrants’ adoption of English as their primary language is one measure of assimilation into
+                        the larger United States society. Generally languages define social groups and provide
+                        justification for social structures. Hence, a distinctive language sets a cultural group off
+                        from the dominant language group. Throughout United States history this pattern has resulted in
+                        one consistent, unhappy consequence, discrimination against members of the cultural minority.
+                        Language differences provide both a way to rationalize subordination and a ready means for
+                        achieving it.
 
                     </p>
                     <p>
-                        
-                        Traditionally, English has replaced the native language of immigrant groups by the second or third generation. Some characteristics of today’s Spanish-speaking population, however, suggest the possibility of a departure from this historical pattern. Many families retain ties in Latin America and move back and forth between their present and former communities. This “revolving door” phenomenon, along with the high probability of additional immigrants from the south, means that large Spanish-speaking communities are likely to exist in the United States for the indefinite future.
 
-                        This expectation underlies the call for national support for bilingual education in Spanish-speaking communities’ public schools. Bilingual education can serve different purposes, however. In the 1960s, such programs were established to facilitate the learning of English so as to avoid disadvantaging children in their other subjects because of their limited English. More recently, many advocates have viewed bilingual education as a means to maintain children’s native languages and cultures. The issue is important for people with different political agendas, from absorption at one pole to separatism at the other.                    
+                        Traditionally, English has replaced the native language of immigrant groups by the second or
+                        third generation. Some characteristics of today’s Spanish-speaking population, however, suggest
+                        the possibility of a departure from this historical pattern. Many families retain ties in Latin
+                        America and move back and forth between their present and former communities. This “revolving
+                        door” phenomenon, along with the high probability of additional immigrants from the south, means
+                        that large Spanish-speaking communities are likely to exist in the United States for the
+                        indefinite future.
+
+                        This expectation underlies the call for national support for bilingual education in
+                        Spanish-speaking communities’ public schools. Bilingual education can serve different purposes,
+                        however. In the 1960s, such programs were established to facilitate the learning of English so
+                        as to avoid disadvantaging children in their other subjects because of their limited English.
+                        More recently, many advocates have viewed bilingual education as a means to maintain children’s
+                        native languages and cultures. The issue is important for people with different political
+                        agendas, from absorption at one pole to separatism at the other.
                     </p>
-               
+
                     <!-- AdSense Ad Placeholder 1 (Leaderboard - 728x90) -->
-                <div class="ad-container">
-                    <div class="ad-label">AdSense Ad (728x90)</div>
+                    <div class="ad-container">
+                        <div class="ad-label">AdSense Ad (728x90)</div>
+                    </div>
+
+                    <p>
+
+                        To date, the evaluations of bilingual education’s impact on learning have been inconclusive. The
+                        issue of bilingual education has, nevertheless, served to unite the leadership of the nation’s
+                        Hispanic communities. Grounded in concerns about status that are directly traceable to the
+                        United States history of discrimination against Hispanics, the demand for maintenance of the
+                        Spanish language in the schools is an assertion of the worth of a people and their culture. If
+                        the United States is truly a multicultural nation—that is, if it is one culture reflecting the
+                        contributions of many—this demand should be seen as a demand not for separation but for
+                        inclusion.
+                    </p>
+
+                    <p>
+
+                        More direct efforts to force inclusion can be misguided. For example, movements to declare
+                        English the official language do not truly advance the cohesion of a multicultural nation. They
+                        alienate the twenty million people who do not speak English as their mother tongue. They are
+                        unnecessary since the public’s business is already conducted largely in English. Further, given
+                        the present state of understanding about the effects of bilingual education on learning, it
+                        would be unwise to require the universal use of English. Finally, it is for parents and local
+                        communities to choose the path they will follow, including how much of their culture they want
+                        to maintain for their children.
+
+
+                    </p>
                 </div>
 
-                    <p>
-                        
-                        To date, the evaluations of bilingual education’s impact on learning have been inconclusive. The issue of bilingual education has, nevertheless, served to unite the leadership of the nation’s Hispanic communities. Grounded in concerns about status that are directly traceable to the United States history of discrimination against Hispanics, the demand for maintenance of the Spanish language in the schools is an assertion of the worth of a people and their culture. If the United States is truly a multicultural nation—that is, if it is one culture reflecting the contributions of many—this demand should be seen as a demand not for separation but for inclusion.                    
-                    </p>
-                    
-                    <p>
-                        
-                        More direct efforts to force inclusion can be misguided. For example, movements to declare English the official language do not truly advance the cohesion of a multicultural nation. They alienate the twenty million people who do not speak English as their mother tongue. They are unnecessary since the public’s business is already conducted largely in English. Further, given the present state of understanding about the effects of bilingual education on learning, it would be unwise to require the universal use of English. Finally, it is for parents and local communities to choose the path they will follow, including how much of their culture they want to maintain for their children.
-
-
-                        </p>
-                    </div>
-                
                 <!-- AdSense Ad Placeholder 3 (Banner - 468x60) -->
                 <div class="ad-container">
                     <div class="ad-label">AdSense Ad (468x60)</div>
@@ -551,18 +130,24 @@
             </div>
 
             <!-- ENTER  QUESTIONS HERE -->
-            
+
             <div class="quiz-section">
                 <div id="question-1" class="question-container">
-                    <div class="question">1. It can be inferred from the passage that one of the characteristics of immigrant groups to the United States has traditionally been that, after immigration, relatively few members of the group</div>
+                    <div class="question">1. It can be inferred from the passage that one of the characteristics of
+                        immigrant groups to the United States has traditionally been that, after immigration, relatively
+                        few members of the group</div>
                     <div class="options">
-                        <div class="option" data-question="1" data-option="1">(A) became politically active in their new communities</div>
-                        <div class="option" data-question="1" data-option="2">(B) moved back and forth repeatedly between the United States and their former communities</div>
-                        <div class="option" data-question="1" data-option="3">(C) used their native languages in their new communities</div>
-                        <div class="option" data-question="1" data-option="4">(D) suffered discrimination in their new communities at the hands of the cultural majority</div>
+                        <div class="option" data-question="1" data-option="1">(A) became politically active in their new
+                            communities</div>
+                        <div class="option" data-question="1" data-option="2">(B) moved back and forth repeatedly
+                            between the United States and their former communities</div>
+                        <div class="option" data-question="1" data-option="3">(C) used their native languages in their
+                            new communities</div>
+                        <div class="option" data-question="1" data-option="4">(D) suffered discrimination in their new
+                            communities at the hands of the cultural majority</div>
                     </div>
                 </div>
-                
+
                 <div id="question-2" class="question-container">
                     <div class="question">2. What two types of knowledge are used in decision-making?</div>
                     <div class="options">
@@ -572,7 +157,7 @@
                         <div class="option" data-question="2" data-option="4">Primary and secondary</div>
                     </div>
                 </div>
-                
+
                 <div id="question-3" class="question-container">
                     <div class="question">3. Decision-making research is sometimes published under what label?</div>
                     <div class="options">
@@ -582,7 +167,7 @@
                         <div class="option" data-question="3" data-option="4">Neural processing</div>
                     </div>
                 </div>
-                
+
                 <div id="question-4" class="question-container">
                     <div class="question">4. What does every decision-making process produce?</div>
                     <div class="options">
@@ -592,9 +177,9 @@
                         <div class="option" data-question="4" data-option="4">A theoretical framework</div>
                     </div>
                 </div>
-                
+
                 <button class="submit-btn" id="submit-btn" disabled>Submit Answers</button>
-                
+
                 <div class="result-container" id="result-container">
                     <div class="result-title">Score</div>
                     <div class="score" id="score">Score: 0/12</div>
@@ -606,7 +191,7 @@
     </div>
 
     <!-- QUESTIONS END -->
-    
+
     <!-- Settings Modal -->
     <div class="modal" id="settings-modal">
         <div class="modal-content">
@@ -614,7 +199,7 @@
                 <div class="modal-title">Settings</div>
                 <button class="close-modal" id="close-modal">&times;</button>
             </div>
-            
+
             <div class="setting-group">
                 <label class="setting-label">Font Size</label>
                 <div class="font-size-controls">
@@ -623,7 +208,7 @@
                     <button class="font-size-btn" data-size="large">Large</button>
                 </div>
             </div>
-            
+
             <div class="setting-group">
                 <label class="setting-label">Dark Mode</label>
                 <label class="toggle-switch">
@@ -631,14 +216,14 @@
                     <span class="slider"></span>
                 </label>
             </div>
-            
+
             <div class="modal-footer">
                 <button class="modal-btn reset-btn" id="reset-test-btn">Reset Test</button>
                 <button class="modal-btn save-btn" id="save-settings-btn">Save Settings</button>
             </div>
         </div>
     </div>
-    
+
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-column">
@@ -660,7 +245,7 @@
                     <a href="https://cat.crookshanksacademy.com">CATalyst Home</a>
                 </div>
             </div>
-           
+
         </div>
         <div class="footer-bottom">
             © 2023 Crookshanks Academy. All rights reserved.
@@ -673,7 +258,7 @@
             const path = window.location.pathname.replace(/\//g, '_');
             return `quizProgress_${path}`;
         }
-        
+
         // ENTER THE CORRECT SOLUTIONS HERE
         const quizData = {
             1: { correct: 2 },
@@ -682,15 +267,15 @@
             4: { correct: 2 }
         };
         // SOLUTIONS END
-        
+
         // Timer variables
         let startTime;
         let timerInterval;
         let quizCompleted = false;
-        
+
         // User answers
         let userAnswers = {};
-        
+
         // Initialize from local storage
         function initializeFromStorage() {
             const storageKey = getStorageKey();
@@ -699,7 +284,7 @@
                 const data = JSON.parse(savedData);
                 userAnswers = data.answers || {};
                 quizCompleted = data.completed || false;
-                
+
                 // Restore selected answers
                 Object.keys(userAnswers).forEach(question => {
                     const option = document.querySelector(`.option[data-question="${question}"][data-option="${userAnswers[question]}"]`);
@@ -707,7 +292,7 @@
                         option.classList.add('selected');
                     }
                 });
-                
+
                 // If quiz was completed, show results
                 if (quizCompleted) {
                     showResults();
@@ -722,21 +307,21 @@
                         startTimer();
                     }
                 }
-                
+
                 // Enable submit button if all questions answered
                 checkSubmitButton();
             } else {
                 startTimer();
             }
-            
+
             // Load settings
             loadSettings();
         }
-        
+
         // Load settings from local storage
         function loadSettings() {
             const settings = JSON.parse(localStorage.getItem('quizSettings')) || {};
-            
+
             // Apply font size
             if (settings.fontSize) {
                 setFontSize(settings.fontSize);
@@ -747,24 +332,24 @@
                     }
                 });
             }
-            
+
             // Apply dark mode
             if (settings.darkMode) {
                 document.body.classList.add('dark-mode');
                 document.getElementById('dark-mode-toggle').checked = true;
             }
         }
-        
+
         // Save settings to local storage
         function saveSettings() {
             const fontSize = document.querySelector('.font-size-btn.active').dataset.size;
             const darkMode = document.getElementById('dark-mode-toggle').checked;
-            
+
             localStorage.setItem('quizSettings', JSON.stringify({
                 fontSize,
                 darkMode
             }));
-            
+
             // Apply settings immediately
             setFontSize(fontSize);
             if (darkMode) {
@@ -773,71 +358,71 @@
                 document.body.classList.remove('dark-mode');
             }
         }
-        
+
         // Set font size by adding class to body
         function setFontSize(size) {
             // Remove all font size classes first
             document.body.classList.remove('font-small', 'font-medium', 'font-large');
-            
+
             // Add the selected class
             document.body.classList.add(`font-${size}`);
         }
-        
+
         // Reset the test
         function resetTest() {
             // Clear user answers
             userAnswers = {};
             quizCompleted = false;
-            
+
             // Reset UI
             document.querySelectorAll('.option').forEach(option => {
                 option.classList.remove('selected', 'correct', 'incorrect');
             });
-            
+
             document.getElementById('result-container').style.display = 'none';
             document.getElementById('submit-btn').disabled = true;
-            
+
             // Restart timer
             stopTimer();
             startTimer();
-            
+
             // Save to storage
             saveProgress();
-            
+
             // Close modal if open
             document.getElementById('settings-modal').style.display = 'none';
         }
-        
+
         // Start timer
         function startTimer() {
             startTime = new Date();
             saveProgress();
             timerInterval = setInterval(updateTimer, 1000);
         }
-        
+
         // Update timer display
         function updateTimer() {
             if (!startTime || quizCompleted) return;
-            
+
             const now = new Date();
             const diff = Math.floor((now - startTime) / 1000);
             const minutes = Math.floor(diff / 60).toString().padStart(2, '0');
             const seconds = (diff % 60).toString().padStart(2, '0');
-            
+
             document.getElementById('timer').textContent = `${minutes}:${seconds}`;
         }
-        
+
         // Stop timer
         function stopTimer() {
             clearInterval(timerInterval);
         }
-        
+
         // Check if all questions are answered
         function checkSubmitButton() {
             const answeredCount = Object.keys(userAnswers).length;
             document.getElementById('submit-btn').disabled = answeredCount < 4;
         }
-        
+
         // Calculate score
         function calculateScore() {
             let score = 0;
@@ -850,13 +435,13 @@
             });
             return Math.max(0, score); // Ensure score doesn't go below 0
         }
-        
+
         // Highlight correct/incorrect answers
         function highlightAnswers() {
             Object.keys(userAnswers).forEach(question => {
                 const userAnswer = userAnswers[question];
                 const correctAnswer = quizData[question].correct;
-                
+
                 // Highlight user's answer
                 const userOption = document.querySelector(`.option[data-question="${question}"][data-option="${userAnswer}"]`);
                 if (userOption) {
@@ -866,7 +451,7 @@
                         userOption.classList.add('incorrect');
                     }
                 }
-                
+
                 // Highlight correct answer if user was wrong
                 if (userAnswer !== correctAnswer) {
                     const correctOption = document.querySelector(`.option[data-question="${question}"][data-option="${correctAnswer}"]`);
@@ -876,15 +461,15 @@
                 }
             });
         }
-        
+
         // Show results
         function showResults() {
             const score = calculateScore();
             const timeTaken = document.getElementById('timer').textContent;
-            
+
             document.getElementById('score').textContent = `Score: ${score}/12`;
             document.getElementById('time-taken').textContent = `Time taken: ${timeTaken}`;
-            
+
             // Simple review based on score
             let review = '';
             if (score >= 10) {
@@ -894,11 +479,11 @@
             } else {
                 review = 'Keep practicing! Review the material and try again.';
             }
-            
+
             document.getElementById('review').textContent = review;
             document.getElementById('result-container').style.display = 'block';
         }
-        
+
         // Save to local storage
         function saveProgress() {
             const storageKey = getStorageKey();
@@ -908,104 +493,104 @@
                 completed: quizCompleted
             }));
         }
-        
+
         // Double click to define word
         function setupDoubleClickDefine() {
             const articleContent = document.getElementById('article-content');
-            articleContent.addEventListener('dblclick', function(e) {
+            articleContent.addEventListener('dblclick', function (e) {
                 const selection = window.getSelection();
                 const selectedText = selection.toString().trim();
-                
+
                 if (selectedText.length > 0) {
                     window.open(`https://www.google.com/search?q=define+${encodeURIComponent(selectedText)}`, '_blank');
                 }
             });
         }
-        
+
         // Initialize the page
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             initializeFromStorage();
             setupDoubleClickDefine();
-            
+
             // Option selection
             document.querySelectorAll('.option').forEach(option => {
-                option.addEventListener('click', function() {
+                option.addEventListener('click', function () {
                     if (quizCompleted) return;
-                    
+
                     const question = this.dataset.question;
                     const optionNum = this.dataset.option;
-                    
+
                     // Remove selected class from other options in this question
                     document.querySelectorAll(`.option[data-question="${question}"]`).forEach(opt => {
                         opt.classList.remove('selected');
                     });
-                    
+
                     // Add selected class to clicked option
                     this.classList.add('selected');
-                    
+
                     // Store answer
                     userAnswers[question] = parseInt(optionNum);
-                    
+
                     // Update storage and check submit button
                     saveProgress();
                     checkSubmitButton();
                 });
             });
-            
+
             // Submit button
-            document.getElementById('submit-btn').addEventListener('click', function() {
+            document.getElementById('submit-btn').addEventListener('click', function () {
                 if (quizCompleted) return;
-                
+
                 quizCompleted = true;
                 stopTimer();
                 highlightAnswers();
                 showResults();
                 saveProgress();
             });
-            
+
             // Back button
-            document.querySelector('.back-button').addEventListener('click', function() {
+            document.querySelector('.back-button').addEventListener('click', function () {
                 window.location.href = "https://cat.crookshanksacademy.com/angrezi100.html"
             });
-            
+
             // Timer click to restart test
-            document.getElementById('timer').addEventListener('click', function() {
+            document.getElementById('timer').addEventListener('click', function () {
                 resetTest();
             });
-            
+
             // Settings icon click
-            document.getElementById('settings-icon').addEventListener('click', function() {
+            document.getElementById('settings-icon').addEventListener('click', function () {
                 document.getElementById('settings-modal').style.display = 'flex';
             });
-            
+
             // Close modal
-            document.getElementById('close-modal').addEventListener('click', function() {
+            document.getElementById('close-modal').addEventListener('click', function () {
                 document.getElementById('settings-modal').style.display = 'none';
             });
-            
+
             // Font size buttons
             document.querySelectorAll('.font-size-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
+                btn.addEventListener('click', function () {
                     document.querySelectorAll('.font-size-btn').forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
                 });
             });
-            
+
             // Save settings
-            document.getElementById('save-settings-btn').addEventListener('click', function() {
+            document.getElementById('save-settings-btn').addEventListener('click', function () {
                 saveSettings();
                 document.getElementById('settings-modal').style.display = 'none';
             });
-            
+
             // Reset test button
-            document.getElementById('reset-test-btn').addEventListener('click', function() {
+            document.getElementById('reset-test-btn').addEventListener('click', function () {
                 if (confirm('Are you sure you want to reset the test? All your progress will be lost.')) {
                     resetTest();
                 }
             });
-            
+
             // Close modal when clicking outside
-            window.addEventListener('click', function(e) {
+            window.addEventListener('click', function (e) {
                 if (e.target === document.getElementById('settings-modal')) {
                     document.getElementById('settings-modal').style.display = 'none';
                 }
@@ -1013,4 +598,5 @@
         });
     </script>
 </body>
+
 </html>
