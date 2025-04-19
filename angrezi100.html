@@ -7,6 +7,31 @@
     <style>
         :root {
             --ease: cubic-bezier(0.19, 1, 0.22, 1);
+            --bg-color: white;
+            --text-color: black;
+            --border-color: #eee;
+            --footer-bg: #f9f9f9;
+            --base-font-size: 1rem;
+        }
+
+        .dark-mode {
+            --bg-color: #121212;
+            --text-color: #f5f5f5;
+            --border-color: #333;
+            --footer-bg: #1e1e1e;
+        }
+
+        /* Font size presets */
+        .font-small {
+            --base-font-size: 0.875rem;
+        }
+
+        .font-medium {
+            --base-font-size: 1rem;
+        }
+
+        .font-large {
+            --base-font-size: 1.125rem;
         }
         
         * {
@@ -17,11 +42,24 @@
         }
         
         body {
-            background-color: white;
-            color: black;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             min-height: 100vh;
             padding: 2rem;
             line-height: 1.6;
+            font-size: var(--base-font-size);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .settings-icon {
+            cursor: pointer;
+            font-size: 1.2rem;
         }
         
         .container {
@@ -85,14 +123,14 @@
         }
         
         .link-cell a {
-            color: black;
+            color: var(--text-color);
             text-decoration: none;
             border-bottom: 1px solid transparent;
             transition: border-color 0.3s var(--ease);
         }
         
         .link-cell a:hover {
-            border-bottom: 1px solid black;
+            border-bottom: 1px solid var(--text-color);
         }
         
         .completed-cell {
@@ -105,7 +143,7 @@
             appearance: none;
             width: 18px;
             height: 18px;
-            border: 2px solid black;
+            border: 2px solid var(--text-color);
             border-radius: 2px;
             cursor: pointer;
             position: relative;
@@ -113,17 +151,151 @@
         }
         
         input[type="checkbox"]:checked {
-            background-color: black;
+            background-color: var(--text-color);
         }
         
         input[type="checkbox"]:checked::after {
             content: "✓";
             position: absolute;
-            color: white;
+            color: var(--bg-color);
             font-size: 12px;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+        }
+        
+        /* Settings Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 20;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: var(--bg-color);
+            padding: 2rem;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+        
+        .setting-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .setting-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .font-size-controls {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .font-size-btn {
+            padding: 0.5rem 1rem;
+            background: var(--footer-bg);
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+        }
+        
+        .font-size-btn.active {
+            background: var(--text-color);
+            color: var(--bg-color);
+        }
+        
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+        
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .modal-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .save-btn {
+            background-color: var(--text-color);
+            color: var(--bg-color);
         }
         
         @media (max-width: 640px) {
@@ -141,9 +313,15 @@
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="container">
+        <div class="header-container">
+            <div></div> <!-- Empty div for spacing -->
+            <i class="fas fa-cog settings-icon" id="settings-icon"></i>
+        </div>
+        
         <header>
             <h1>Angrezi-100 Challenge</h1>
             <p class="subtitle">Daily Reading Comprehensions for the CAT Exam.</p>
@@ -166,32 +344,58 @@
         </table>
     </div>
 
+    <!-- Settings Modal -->
+    <div class="modal" id="settings-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Settings</div>
+                <button class="close-modal" id="close-modal">&times;</button>
+            </div>
+            
+            <div class="setting-group">
+                <label class="setting-label">Font Size</label>
+                <div class="font-size-controls">
+                    <button class="font-size-btn" data-size="small">Small</button>
+                    <button class="font-size-btn active" data-size="medium">Medium</button>
+                    <button class="font-size-btn" data-size="large">Large</button>
+                </div>
+            </div>
+            
+            <div class="setting-group">
+                <label class="setting-label">Dark Mode</label>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="dark-mode-toggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="modal-btn save-btn" id="save-settings-btn">Save Settings</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Mock data for daily targets
         const mockList = [
-            "Why would US make English an Official Language?","Science, environment, and technology RC-2",
-     
+            "Why would US make English an Official Language?",
+            "Science, environment, and technology RC-2",
+        ];
 
-
-];
-
-const linkList = [
- "./angrezi100/1.html",
-  "./angrezi100/1.html"
-];
-
+        const linkList = [
+            "./angrezi100/1.html",
+            "./angrezi100/1.html"
+        ];
 
         const dailyTargets = Array.from({ length: 100 }, (_, i) => {
             const day = i + 1;
             return {
                 day: day,
-                title: mockList[day-1],
-                link:  `./angrezi100/${day}.html`,
+                title: mockList[day-1] || `Day ${day} Reading Comprehension`,
+                link: `./angrezi100/${day}.html`,
                 completed: false
             };
         });
-
-       
 
         // Initialize local storage if empty
         function initializeStorage() {
@@ -219,6 +423,56 @@ const linkList = [
             const completedCount = progress.filter(item => item.completed).length;
             const percentage = (completedCount / 100) * 100;
             document.getElementById('progress-bar').style.width = `${percentage}%`;
+        }
+
+        // Load settings from local storage
+        function loadSettings() {
+            const settings = JSON.parse(localStorage.getItem('quizSettings')) || {};
+            
+            // Apply font size
+            if (settings.fontSize) {
+                setFontSize(settings.fontSize);
+                document.querySelectorAll('.font-size-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                    if (btn.dataset.size === settings.fontSize) {
+                        btn.classList.add('active');
+                    }
+                });
+            }
+            
+            // Apply dark mode
+            if (settings.darkMode) {
+                document.body.classList.add('dark-mode');
+                document.getElementById('dark-mode-toggle').checked = true;
+            }
+        }
+        
+        // Save settings to local storage
+        function saveSettings() {
+            const fontSize = document.querySelector('.font-size-btn.active').dataset.size;
+            const darkMode = document.getElementById('dark-mode-toggle').checked;
+            
+            localStorage.setItem('quizSettings', JSON.stringify({
+                fontSize,
+                darkMode
+            }));
+            
+            // Apply settings immediately
+            setFontSize(fontSize);
+            if (darkMode) {
+                document.body.classList.add('dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+            }
+        }
+        
+        // Set font size by adding class to body
+        function setFontSize(size) {
+            // Remove all font size classes first
+            document.body.classList.remove('font-small', 'font-medium', 'font-large');
+            
+            // Add the selected class
+            document.body.classList.add(`font-${size}`);
         }
 
         // Render the table
@@ -256,6 +510,38 @@ const linkList = [
             initializeStorage();
             renderTable();
             updateProgressBar();
+            loadSettings();
+            
+            // Settings icon click
+            document.getElementById('settings-icon').addEventListener('click', function() {
+                document.getElementById('settings-modal').style.display = 'flex';
+            });
+            
+            // Close modal
+            document.getElementById('close-modal').addEventListener('click', function() {
+                document.getElementById('settings-modal').style.display = 'none';
+            });
+            
+            // Font size buttons
+            document.querySelectorAll('.font-size-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.font-size-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Save settings
+            document.getElementById('save-settings-btn').addEventListener('click', function() {
+                saveSettings();
+                document.getElementById('settings-modal').style.display = 'none';
+            });
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', function(e) {
+                if (e.target === document.getElementById('settings-modal')) {
+                    document.getElementById('settings-modal').style.display = 'none';
+                }
+            });
         });
     </script>
 </body>
