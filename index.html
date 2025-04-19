@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BSchool Search</title>
+    <style>
+        :root {
+            --ease: cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        body {
+            background-color: white;
+            color: black;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+        
+        .main-content {
+            width: 100%;
+            max-width: 480px;
+            margin: auto;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 3rem;
+            letter-spacing: -0.5px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: black;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.6s var(--ease);
+        }
+        
+        .logo:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        .search-container {
+            width: 100%;
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        #search-bar {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            font-size: 1rem;
+            border: none;
+            border-bottom: 1px solid black;
+            outline: none;
+            background: transparent;
+            transition: all 0.4s var(--ease);
+            text-align: center;
+        }
+        
+        #search-bar:focus {
+            border-bottom-width: 2px;
+        }
+        
+        #search-bar::placeholder {
+            color: #aaa;
+            letter-spacing: -0.2px;
+        }
+        
+        #results-container {
+            width: 100%;
+            margin-top: 0.5rem;
+            display: none;
+            overflow: hidden;
+            text-align: left;
+        }
+        
+        .result-item {
+            padding: 1.25rem 1rem;
+            border-bottom: 1px solid #f0f0f0;
+            cursor: pointer;
+            transition: all 0.3s var(--ease);
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeIn 0.4s var(--ease) forwards;
+        }
+        
+        .result-item:nth-child(1) { animation-delay: 0.05s; }
+        .result-item:nth-child(2) { animation-delay: 0.1s; }
+        .result-item:nth-child(3) { animation-delay: 0.15s; }
+        
+        .result-item:hover {
+            background: #fafafa;
+        }
+        
+        .result-item h3 {
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+        
+        .result-item p {
+            color: #777;
+            font-size: 0.85rem;
+            font-weight: 400;
+        }
+        
+        .no-results {
+            padding: 1.5rem;
+            text-align: center;
+            color: #999;
+            font-size: 0.9rem;
+            opacity: 0;
+            animation: fadeIn 0.4s var(--ease) forwards;
+        }
+        
+        .default-content {
+            width: 100%;
+            display: block;
+            transition: opacity 0.3s var(--ease);
+        }
+        
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .quick-link {
+            padding: 1.5rem;
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s var(--ease);
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .quick-link:hover {
+            background: #fafafa;
+            transform: translateY(-2px);
+        }
+        
+        .quick-link h3 {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        .quick-link p {
+            color: #777;
+            font-size: 0.85rem;
+        }
+        
+        footer {
+            margin-top: auto;
+            padding: 2rem 0 1rem;
+            text-align: center;
+            color: #ccc;
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 640px) {
+            body {
+                padding: 1.5rem;
+            }
+            
+            .logo {
+                margin-bottom: 2rem;
+                font-size: 1.5rem;
+                font-weight: 200;
+            }
+            
+            #search-bar {
+                padding: 0.9rem 1rem;
+            }
+            
+            .quick-links {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main-content">
+        <div class="logo">interview transcripts</div>
+        
+        <div class="search-container">
+            <input type="text" id="search-bar" placeholder="search for business schools..." autocomplete="off">
+            <div id="results-container"></div>
+        </div>
+        
+        <div class="default-content" id="default-content">
+            <div class="quick-links">
+                <div class="quick-link" onclick="window.location.href='top-schools.html'">
+                    <h3>Angrezi100</h3>
+                    <p>We scrouged through Aeon Essays and selected 100 best articles for you to pratice.</p>
+                </div>
+                <div class="quick-link" onclick="window.location.href='mba-programs.html'">
+                    <h3>College Data</h3>
+                    <p>Checkout past year college data to get an idea of interview dates and schedule.</p>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        created with ♥️ and code by dhruv badaya. <br>send your transcripts at transcripts@dhruvvv.com.
+    </footer>
+
+    <script>
+        // Business school data
+        const bschools = {
+    // Top Ten
+    "Faculty of Management Studies (FMS), University of Delhi": "fms-delhi.html",
+    "Indian Institute of Management Ahmedabad (IIMA)": "iima.html",
+    "Indian Institute of Management Bangalore (IIMB)": "iimb.html",
+    "Indian Institute of Management Calcutta (IIMC)": "iimc.html",
+    "Indian Institute of Management Indore (IIMI)": "iimi.html",
+    "Indian Institute of Management Kozhikode (IIMK)": "iimk.html",
+    "Indian Institute of Management Lucknow (IIML)": "iiml.html",
+    "Shailesh J. Mehta School of Management (SJMSOM), Indian Institute of Technology Bombay (IITB)": "sjmsom.html",
+    "S. P. Jain Institute of Management & Research (SPJIMR), Mumbai": "spjimr.html",
+    
+    // AAA+
+    "Department of Management Studies, Indian Institute of Technology Delhi (IITD)": "dms-iitd.html",
+    "Indian Institute of Management Mumbai (IIM Mumbai)": "iim-mumbai.html",
+    "Jamnalal Bajaj Institute of Management Studies (JBIMS), Mumbai": "jbims.html",
+    "Management Development Institute (MDI), Gurugram": "mdi.html",
+    "Narsee Monjee Institute of Management Studies (NMIMS), Mumbai": "nmims.html",
+    "Rajiv Gandhi Indian Institute of Management Shillong (RGIIM)": "rgiim.html",
+    "Symbiosis Centre for Management & Human Resource Development (SCMHRD), Pune": "scmhrd.html",
+    "Symbiosis Institute of Business Management (SIBM), Pune": "sibm.html",
+    "Tata Institute of Social Sciences (TISS), Mumbai": "tiss.html",
+    
+    // AAA
+    "Department of Industrial and Management Engineering (IME), Indian Institute of Technology Kanpur (IIT-K)": "ime-iitk.html",
+    "Department of Management Studies (DOMS), Indian Institute of Science (IISc.) Bengaluru": "doms-iisc.html",
+    "Department of Management Studies (DOMS), Indian Institute of Technology Madras (IITM)": "doms-iitm.html",
+    "Department of Management Studies (DOMS), Indian Institute of Technology Roorkee (IITR)": "doms-iitr.html",
+    "Indian Institute of Management Raipur (IIM-Rai)": "iim-raipur.html",
+    "Indian Institute of Management Ranchi (IIM-Ran)": "iim-ranchi.html",
+    "Indian Institute of Management Rohtak (IIM-Roh)": "iim-rohtak.html",
+    "Indian Institute of Management Trichy (IIMT)": "iim-trichy.html",
+    "Indian Institute of Management Udaipur (IIMU)": "iim-udaipur.html",
+    "Vinod Gupta School of Management (VGSOM), Indian Institute of Technology Kharagpur (IIT-KGP)": "vgsom.html",
+    
+    // AA
+    "BITS School of Management (BITSoM), Mumbai": "bitsom.html",
+    "Department of Business Economics (DBE), South Campus, University of Delhi": "dbe-delhi.html",
+    "Department of Commerce, Delhi School of Economics (DSE), University of Delhi": "dse.html",
+    "Department of Financial Studies (DFS), South Campus, University of Delhi": "dfs.html",
+    "Great Lakes Institute of Management (GLIM), Chennai (PGDM Two-Year Programme)": "glim.html",
+    "Indian Institute of Management Amritsar (IIM–Am)": "iim-amritsar.html",
+    "Indian Institute of Management Kashipur (IIM-Ka)": "iim-kashipur.html",
+    "Indian Institute of Management Nagpur (IIMN)": "iim-nagpur.html",
+    "Indian Institute of Management Sambalpur (IIMS)": "iim-sambalpur.html",
+    "Indian Institute of Management Visakhapatnam (IIMV)": "iim-vizag.html",
+    "Institute of Management Technology (IMT), Ghaziabad": "imt.html",
+    "International Management Institute (IMI), New Delhi": "imi.html",
+    "MICA Ahmedabad": "mica.html",
+    "Sydenham Institute of Management Studies and Research and Entrepreneurship Education (SIMSREE), Mumbai": "simsree.html",
+    "Xavier Institute of Management (XIM-B), Bhubaneswar": "ximb.html",
+    
+    // A
+    "Department of Humanities and Social Sciences, IIT Kharagpur (IIT-KGP)": "hss-iitkgp.html",
+    "FORE School of Management, New Delhi": "fore.html",
+    "Goa Institute of Management (GIM), Sanquelim (Goa)": "gim.html",
+    "Indian Institute of Management Bodh Gaya (IIM-BG)": "iim-bodhgaya.html",
+    "Indian Institute of Management Jammu (IIMJ)": "iim-jammu.html",
+    "Indian Institute of Management Sirmaur (IIM-S)": "iim-sirmaur.html",
+    "Institute of Rural Management Anand (IRMA)": "irma.html",
+    "Lal Bahadur Shastri Institute of Management (LBSIM), Delhi": "lbsim.html",
+    "National Institute of Banking and Management (NIBM), Pune": "nibm.html",
+    "NMIMS Bengaluru": "nmims-bangalore.html",
+    "Prin. L. N. Welingkar Institute of Management Development & Research (We School), Mumbai": "welingkar.html",
+    "SDA Bocconi Asia Center, Mumbai": "sda-bocconi.html",
+    "Symbiosis Institute of Business Management, Bengaluru (SIBM–B)": "sibm-bangalore.html",
+    "T. A. Pai Management Institute (TAPMI), Manipal": "tapmi.html",
+    "University Business School (UBS), Panjab University, Chandigarh": "ubs.html"
+};
+        
+        const searchBar = document.getElementById('search-bar');
+        const resultsContainer = document.getElementById('results-container');
+        const defaultContent = document.getElementById('default-content');
+        
+        // Focus search bar when pressing '/' key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === '/') {
+                e.preventDefault();
+                searchBar.focus();
+            }
+        });
+        
+        searchBar.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase().trim();
+            
+            if (searchTerm.length === 0) {
+                resultsContainer.style.display = 'none';
+                defaultContent.style.display = 'block';
+                setTimeout(() => {
+                    defaultContent.style.opacity = '1';
+                }, 10);
+                return;
+            }
+            
+            // Hide default content
+            defaultContent.style.opacity = '0';
+            setTimeout(() => {
+                defaultContent.style.display = 'none';
+            }, 300);
+            
+            // Filter schools based on search term
+            const filteredResults = Object.keys(bschools).filter(school => 
+                school.toLowerCase().includes(searchTerm)
+            ).slice(0, 5); // Show max 5 results
+            
+            displayResults(filteredResults);
+        });
+        
+        // Show default content when search bar loses focus
+        searchBar.addEventListener('blur', function() {
+            if (searchBar.value.length === 0) {
+                defaultContent.style.display = 'block';
+                setTimeout(() => {
+                    defaultContent.style.opacity = '1';
+                }, 10);
+            }
+        });
+        
+        function displayResults(results) {
+            resultsContainer.innerHTML = '';
+            
+            if (results.length === 0) {
+                const noResults = document.createElement('div');
+                noResults.className = 'no-results';
+                noResults.textContent = 'No matching schools found';
+                resultsContainer.appendChild(noResults);
+            } else {
+                results.forEach(school => {
+                    const resultItem = document.createElement('div');
+                    resultItem.className = 'result-item';
+                    
+                    const schoolName = document.createElement('h3');
+                    schoolName.textContent = school;
+                    
+                    const location = document.createElement('p');
+                    // Clean location data
+                    const locations = {
+    
+    // Platinum Tier (Top Ten)
+    "Faculty of Management Studies (FMS), University of Delhi": "Platinum Tier",
+    "Indian Institute of Management Ahmedabad (IIMA)": "Platinum Tier",
+    "Indian Institute of Management Bangalore (IIMB)": "Platinum Tier",
+    "Indian Institute of Management Calcutta (IIMC)": "Platinum Tier",
+    "Indian Institute of Management Indore (IIMI)": "Platinum Tier",
+    "Indian Institute of Management Kozhikode (IIMK)": "Platinum Tier",
+    "Indian Institute of Management Lucknow (IIML)": "Platinum Tier",
+    "Shailesh J. Mehta School of Management (SJMSOM), Indian Institute of Technology Bombay (IITB)": "Platinum Tier",
+    "S. P. Jain Institute of Management & Research (SPJIMR), Mumbai": "Platinum Tier",
+    
+    // Gold Tier (AAA+)
+    "Department of Management Studies, Indian Institute of Technology Delhi (IITD)": "Gold Tier",
+    "Indian Institute of Foreign Trade (IIFT), New Delhi and Kolkata": "Gold Tier",
+    "Indian Institute of Management Mumbai (IIM Mumbai)": "Gold Tier",
+    "Jamnalal Bajaj Institute of Management Studies (JBIMS), Mumbai": "Gold Tier",
+    "Management Development Institute (MDI), Gurugram": "Gold Tier",
+    "Narsee Monjee Institute of Management Studies (NMIMS), Mumbai": "Gold Tier",
+    "Rajiv Gandhi Indian Institute of Management Shillong (RGIIM)": "Gold Tier",
+    "Symbiosis Centre for Management & Human Resource Development (SCMHRD), Pune": "Gold Tier",
+    "Symbiosis Institute of Business Management (SIBM), Pune": "Gold Tier",
+    "Tata Institute of Social Sciences (TISS), Mumbai": "Gold Tier",
+    
+    // Silver Tier (AAA)
+    "Department of Industrial and Management Engineering (IME), Indian Institute of Technology Kanpur (IIT-K)": "Silver Tier",
+    "Department of Management Studies (DOMS), Indian Institute of Science (IISc.) Bengaluru": "Silver Tier",
+    "Department of Management Studies (DOMS), Indian Institute of Technology Madras (IITM)": "Silver Tier",
+    "Department of Management Studies (DOMS), Indian Institute of Technology Roorkee (IITR)": "Silver Tier",
+    "Indian Institute of Management Raipur (IIM-Rai)": "Silver Tier",
+    "Indian Institute of Management Ranchi (IIM-Ran)": "Silver Tier",
+    "Indian Institute of Management Rohtak (IIM-Roh)": "Silver Tier",
+    "Indian Institute of Management Trichy (IIMT)": "Silver Tier",
+    "Indian Institute of Management Udaipur (IIMU)": "Silver Tier",
+    "Vinod Gupta School of Management (VGSOM), Indian Institute of Technology Kharagpur (IIT-KGP)": "Silver Tier",
+    
+    // Silver Tier (AA)
+    "BITS School of Management (BITSoM), Mumbai": "Silver Tier",
+    "Department of Business Economics (DBE), South Campus, University of Delhi": "Silver Tier",
+    "Department of Commerce, Delhi School of Economics (DSE), University of Delhi": "Silver Tier",
+    "Department of Financial Studies (DFS), South Campus, University of Delhi": "Silver Tier",
+    "Great Lakes Institute of Management (GLIM), Chennai (PGDM Two-Year Programme)": "Silver Tier",
+    "Indian Institute of Management Amritsar (IIM–Am)": "Silver Tier",
+    "Indian Institute of Management Kashipur (IIM-Ka)": "Silver Tier",
+    "Indian Institute of Management Nagpur (IIMN)": "Silver Tier",
+    "Indian Institute of Management Sambalpur (IIMS)": "Silver Tier",
+    "Indian Institute of Management Visakhapatnam (IIMV)": "Silver Tier",
+    "Institute of Management Technology (IMT), Ghaziabad": "Silver Tier",
+    "International Management Institute (IMI), New Delhi": "Silver Tier",
+    "MICA Ahmedabad": "Silver Tier",
+    "Sydenham Institute of Management Studies and Research and Entrepreneurship Education (SIMSREE), Mumbai": "Silver Tier",
+    "Xavier Institute of Management (XIM-B), Bhubaneswar": "Silver Tier",
+    
+    // Bronze Tier (A)
+    "Department of Humanities and Social Sciences, IIT Kharagpur (IIT-KGP)": "Bronze Tier",
+    "FORE School of Management, New Delhi": "Bronze Tier",
+    "Goa Institute of Management (GIM), Sanquelim (Goa)": "Bronze Tier",
+    "Indian Institute of Management Bodh Gaya (IIM-BG)": "Bronze Tier",
+    "Indian Institute of Management Jammu (IIMJ)": "Bronze Tier",
+    "Indian Institute of Management Sirmaur (IIM-S)": "Bronze Tier",
+    "Institute of Rural Management Anand (IRMA)": "Bronze Tier",
+    "Lal Bahadur Shastri Institute of Management (LBSIM), Delhi": "Bronze Tier",
+    "National Institute of Banking and Management (NIBM), Pune": "Bronze Tier",
+    "NMIMS Bengaluru": "Bronze Tier",
+    "Prin. L. N. Welingkar Institute of Management Development & Research (We School), Mumbai": "Bronze Tier",
+    "SDA Bocconi Asia Center, Mumbai": "Bronze Tier",
+    "Symbiosis Institute of Business Management, Bengaluru (SIBM–B)": "Bronze Tier",
+    "T. A. Pai Management Institute (TAPMI), Manipal": "Bronze Tier",
+    "University Business School (UBS), Panjab University, Chandigarh": "Bronze Tier"
+};
+                    
+location.textContent = locations[school] || "Top-ranked MBA program";
+
+                    
+                    resultItem.appendChild(schoolName);
+                    resultItem.appendChild(location);
+                    
+                    resultItem.addEventListener('click', function() {
+                        window.location.href = bschools[school];
+                    });
+                    
+                    resultsContainer.appendChild(resultItem);
+                });
+            }
+            
+            resultsContainer.style.display = 'block';
+        }
+        
+        // Close results when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!searchBar.contains(e.target) && !resultsContainer.contains(e.target)) {
+                resultsContainer.style.display = 'none';
+                
+                if (searchBar.value.length === 0) {
+                    defaultContent.style.display = 'block';
+                    setTimeout(() => {
+                        defaultContent.style.opacity = '1';
+                    }, 10);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
