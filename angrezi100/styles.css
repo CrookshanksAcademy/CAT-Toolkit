@@ -100,7 +100,7 @@ body {
     font-size: var(--base-font-size);
     font-weight: 500;
     cursor: pointer;
-    text-decoration: underline;
+    text-decoration: none;
     color: var(--text-color);
 }
 
