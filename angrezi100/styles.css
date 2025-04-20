@@ -475,3 +475,49 @@ input:checked + .slider:before {
         grid-template-columns: 1fr;
     }
 }
+
+  /* Add these styles for the explanations */
+  .explanation {
+    display: none;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    border-left: 3px solid #4CAF50;
+}
+
+.dark-mode .explanation {
+    background-color: #2d2d2d;
+    border-left-color: #4CAF50;
+}
+
+.explanation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.explanation-content {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid #ddd;
+}
+
+.dark-mode .explanation-content {
+    border-top-color: #444;
+}
+
+.explanation-toggle {
+    font-size: 14px;
+    color: #666;
+}
+
+.dark-mode .explanation-toggle {
+    color: #aaa;
+}
+
+.explanation.show {
+    display: block;
+}
