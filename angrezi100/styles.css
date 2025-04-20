@@ -124,6 +124,7 @@ body {
     flex: 1;
     padding-right: 2rem;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .quiz-section {
