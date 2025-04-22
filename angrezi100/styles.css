@@ -157,7 +157,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100px;
+    /* min-height: 100px; */
     border: 1px dashed var(--border-color);
 }
 
