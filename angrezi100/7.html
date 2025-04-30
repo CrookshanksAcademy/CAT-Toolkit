@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- TAGS -->
+    <title>DAY 6 - Angrezi100 Challenge | CATalyst CAT Prep by Crookshanks Academy</title>
+    <meta name="description"
+        content="Kickstart your CAT preparation with DAY 6 of the Angrezi100 Challenge by Crookshanks Academy. Boost your English skills for CAT with expert-curated lessons and tips. Join the CATalyst journey now!">
+    <meta property="og:title" content="DAY 6 - Angrezi100 Challenge | CATalyst CAT Prep by Crookshanks Academy">
+    <meta property="og:description"
+        content="Start your CAT prep journey with DAY 6 of the Angrezi100 Challenge. Build strong English skills with expert guidance from Crookshanks Academy.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cat.crookshanksacademy.com/angrezi100/2.html">
+    <meta property="og:image" content="https://cat.crookshanksacademy.com/assets/angrezi100.jpg">
+    <link rel="icon" href="https://cat.crookshanksacademy.com/favicon.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9887862710118026"
+        crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9887862710118026"
+        crossorigin="anonymous"></script>
+    <script async src="https://fundingchoicesmessages.google.com/i/pub-9887862710118026?ers=1"
+        nonce="WDEhggFtERn9PXG4p5_dPA"></script>
+    <script
+        nonce="WDEhggFtERn9PXG4p5_dPA">(function () { function signalGooglefcPresent() { if (!window.frames['googlefcPresent']) { if (document.body) { const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe); } else { setTimeout(signalGooglefcPresent, 0); } } } signalGooglefcPresent(); })();</script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SNMKKCB31B"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-SNMKKCB31B');
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <button class="back-button">← Back</button>
+        <div class="timer-container">
+            <div class="timer" id="timer">00:00</div>
+            <i class="fas fa-cog settings-icon" id="settings-icon"></i>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="container">
+            <div class="article-section">
+                <h1 class="article-title" id="article-title">Loading...</h1>
+                <div class="article-content"><em id="difficulty-text">Loading difficulty...</em></div>
+
+                <div class="article-content" id="article-content">
+                    <p id="article-text">Loading article content...</p>
+                </div>
+
+                <!-- AdSense Ad Placeholder 1 (Leaderboard - 728x90) -->
+                <div class="ad-container">
+                    <script async
+                        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9887862710118026"
+                        crossorigin="anonymous"></script>
+                    <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px"
+                        data-ad-client="ca-pub-9887862710118026" data-ad-slot="9074569889"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+
+            <!-- Questions will be inserted here by JavaScript -->
+            <div class="quiz-section" id="quiz-section">
+                <!-- Questions will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal" id="settings-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Settings</div>
+                <button class="close-modal" id="close-modal">&times;</button>
+            </div>
+
+            <div class="setting-group">
+                <label class="setting-label">Font Size</label>
+                <div class="font-size-controls">
+                    <button class="font-size-btn" data-size="small">Small</button>
+                    <button class="font-size-btn active" data-size="medium">Medium</button>
+                    <button class="font-size-btn" data-size="large">Large</button>
+                </div>
+            </div>
+
+            <div class="setting-group">
+                <label class="setting-label">Dark Mode</label>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="dark-mode-toggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="modal-footer">
+                <button class="modal-btn reset-btn" id="reset-test-btn">Reset Test</button>
+                <button class="modal-btn save-btn" id="save-settings-btn">Save Settings</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <div class="footer-logo">CATalyst</div>
+                <p>Made with ♥️ by Dhruv Badaya.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <div class="footer-links">
+                    <a href="https://www.crookshanksacademy.com/contact">Contact Us</a>
+                    <a href="https://www.crookshanksacademy.com/privacy-policy">Privacy Policy</a>
+                    <a href="https://www.crookshanksacademy.com/ads-policy">Ads Policy</a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <div class="footer-links">
+                    <a href="https://www.crookshanksacademy.com">Crookshanks Academy</a>
+                    <a href="https://cat.crookshanksacademy.com">CATalyst Home</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2023 Crookshanks Academy. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Get the JSON file number from the URL slug
+        function getJsonFileNumber() {
+            const path = window.location.pathname;
+            const match = path.match(/\/(\d+)\.html$/);
+            return match ? match[1] : '1'; // Default to 1 if no number found
+        }
+
+        // Fetch and load the JSON data
+        async function loadQuizData() {
+            const jsonNumber = getJsonFileNumber();
+            try {
+                const response = await fetch(`${jsonNumber}.json`);
+                if (!response.ok) {
+                    throw new Error('Failed to load quiz data');
+                }
+                const data = await response.json();
+                
+                // Update the page with the loaded data
+                document.getElementById('article-title').textContent = data.title;
+                document.getElementById('difficulty-text').textContent = `Difficulty: ${data.difficulty}`;
+                document.getElementById('article-text').textContent = data.article;
+                
+                // Generate the questions HTML
+                const quizSection = document.getElementById('quiz-section');
+                quizSection.innerHTML = generateQuestionsHtml(data.questions);
+                
+                // Initialize the quiz functionality
+                initializeQuiz(data.questions);
+                
+            } catch (error) {
+                console.error('Error loading quiz data:', error);
+                // Display error message to user
+                document.getElementById('article-title').textContent = 'Error Loading Content';
+                document.getElementById('article-text').textContent = 'Failed to load the quiz content. Please try again later.';
+            }
+        }
+
+        // Generate HTML for questions
+        function generateQuestionsHtml(questions) {
+            let html = '';
+            
+            questions.forEach((question, index) => {
+                const questionNum = index + 1;
+                html += `
+                    <div id="question-${questionNum}" class="question-container">
+                        <div class="question">${questionNum}. ${question.text}</div>
+                        <div class="options">
+                            ${question.options.map((option, i) => `
+                                <div class="option" data-question="${questionNum}" data-option="${i + 1}">(${String.fromCharCode(65 + i)}) ${option}</div>
+                            `).join('')}
+                        </div>
+                        <div class="explanation" id="explanation-${questionNum}">
+                            <div class="explanation-header">
+                                <span>Explanation</span>
+                                <span class="explanation-toggle">+</span>
+                            </div>
+                            <div class="explanation-content">
+                                ${question.explanation}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            html += `
+                <button class="submit-btn" id="submit-btn" disabled>Submit Answers</button>
+                <div class="result-container" id="result-container">
+                    <div class="result-title">Score</div>
+                    <div class="score" id="score">Score: 0/${questions.length}</div>
+                    <div class="review" id="review"></div>
+                    <div class="time-taken" id="time-taken">Time taken: 00:00</div>
+                </div>
+            `;
+            
+            return html;
+        }
+
+        // Initialize quiz functionality
+        function initializeQuiz(questions) {
+            // Create quizData object from questions
+            const quizData = {};
+            questions.forEach((question, index) => {
+                quizData[index + 1] = { correct: question.correctAnswer };
+            });
+
+            // Rest of your quiz functionality...
+            // (Keep all your existing event listeners and quiz logic here)
+            // For example:
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', function() {
+                    // Your option selection logic
+                });
+            });
+
+            document.getElementById('submit-btn').addEventListener('click', function() {
+                // Your submit logic
+            });
+
+            // And all other event listeners and functions from your original script
+        }
+
+        // Load the quiz data when the page loads
+        document.addEventListener('DOMContentLoaded', loadQuizData);
+    </script>
+
+    <script src="index.js"></script>
+</body>
+</html>
