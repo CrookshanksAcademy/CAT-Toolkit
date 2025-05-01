@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <div class="header-content">
+                <div class="progress">0/0</div>
+                <button class="settings-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <main class="main">
+            <div class="flashcard-container">
+                <div class="flashcard">
+                    <div class="flashcard-front">
+                        <img class="flashcard-image" src="" alt="Question">
+                    </div>
+                    <div class="flashcard-back">
+                        <img class="flashcard-image" src="" alt="Answer">
+                    </div>
+                </div>
+                <div class="response-buttons">
+                    <button class="incorrect-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                    <button class="correct-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <div class="ad-container">
+            <div class="ad-content">
+                <small>ADVERTISEMENT</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay settings-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Settings</h3>
+                <button class="close-modal">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="setting-group">
+                    <h4>Theme</h4>
+                    <div class="theme-options">
+                        <label class="theme-option">
+                            <input type="radio" name="theme" value="light" checked>
+                            <span>Light</span>
+                        </label>
+                        <label class="theme-option">
+                            <input type="radio" name="theme" value="dark">
+                            <span>Dark</span>
+                        </label>
+                    </div>
+                </div>
+                <button class="reset-btn">Reset Flashcards</button>
+            </div>
+            <div class="modal-footer">
+                <div class="credits">
+                    <p>Created by Dhruv Badaya</p>
+                    <p>Version 1.0.0</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay completion-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>All Done!</h3>
+            </div>
+            <div class="modal-body">
+                <p>You've completed all flashcards.</p>
+                <button class="reset-completed-btn">Reset Flashcards</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

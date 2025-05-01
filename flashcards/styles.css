@@ -1,0 +1,439 @@
+:root {
+    --bg: #ffffff;
+    --text: #000000;
+    --border: #eaeaea;
+    --card-bg: #ffffff;
+    --shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    --hover-bg: #f9f9f9;
+    --active-bg: #f0f0f0;
+    --modal-overlay: rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] {
+    --bg: #000000;
+    --text: #ffffff;
+    --border: #222222;
+    --card-bg: #111111;
+    --shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    --hover-bg: #1a1a1a;
+    --active-bg: #2a2a2a;
+    --modal-overlay: rgba(0, 0, 0, 0.6);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header {
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 0;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+}
+
+.progress {
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+}
+
+.settings-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text);
+}
+
+.settings-btn:hover {
+    background-color: var(--hover-bg);
+}
+
+.settings-btn:active {
+    background-color: var(--active-bg);
+}
+
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1.5rem;
+}
+
+.flashcard-container {
+    width: 100%;
+    max-width: 800px;
+    perspective: 1000px;
+    margin-bottom: 2rem;
+}
+
+.flashcard {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    transform-style: preserve-3d;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    background-color: var(--card-bg);
+    margin-bottom: 1.5rem;
+}
+
+.flashcard.flipped {
+    transform: rotateY(180deg);
+    cursor: default;
+}
+
+.flashcard-front, .flashcard-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flashcard-back {
+    transform: rotateY(180deg);
+}
+
+.flashcard-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.response-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.correct-btn, .incorrect-btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background-color: var(--card-bg);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.correct-btn:hover, .incorrect-btn:hover {
+    background-color: var(--hover-bg);
+}
+
+.correct-btn:active, .incorrect-btn:active {
+    background-color: var(--active-bg);
+}
+
+.ad-container {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--border);
+}
+
+.ad-content {
+    width: 100%;
+    height: 90px;
+    background-color: var(--hover-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+}
+
+.ad-content small {
+    font-size: 0.75rem;
+    color: var(--text);
+    opacity: 0.6;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--modal-overlay);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 1rem;
+}
+
+.modal {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border);
+    overflow: hidden;
+}
+
+.modal-header {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 6px;
+    color: var(--text);
+}
+
+.close-modal:hover {
+    background-color: var(--hover-bg);
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.setting-group {
+    margin-bottom: 1.5rem;
+}
+
+.setting-group h4 {
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+    color: var(--text);
+    opacity: 0.8;
+}
+
+.theme-options {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.theme-option {
+    flex: 1;
+    position: relative;
+}
+
+.theme-option input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.theme-option span {
+    display: block;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    text-align: center;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.theme-option input:checked + span {
+    background-color: var(--hover-bg);
+    font-weight: 500;
+}
+
+.reset-btn, .reset-completed-btn {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background-color: var(--card-bg);
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.2s;
+    margin-top: 0.5rem;
+}
+
+.reset-btn:hover, .reset-completed-btn:hover {
+    background-color: var(--hover-bg);
+}
+
+.modal-footer {
+    padding: 1.25rem 1.5rem;
+    border-top: 1px solid var(--border);
+}
+
+.credits {
+    font-size: 0.75rem;
+    color: var(--text);
+    opacity: 0.6;
+    text-align: center;
+    line-height: 1.5;
+}
+
+@media (max-width: 640px) {
+    .flashcard {
+        padding-bottom: 75%;
+    }
+    
+    .response-buttons {
+        gap: 0.75rem;
+    }
+    
+    .correct-btn, .incorrect-btn {
+        padding: 0.75rem;
+        flex: 1;
+    }
+}
+
+
+
+/* Add these updates to your existing CSS */
+
+/* Fix button text color in dark mode */
+[data-theme="dark"] .correct-btn,
+[data-theme="dark"] .incorrect-btn,
+[data-theme="dark"] .reset-btn,
+[data-theme="dark"] .reset-completed-btn {
+    color: white;
+}
+
+/* Adjust flashcard size for desktop */
+@media (min-width: 1024px) {
+    .flashcard-container {
+        max-width: 600px; /* Reduced from 800px */
+    }
+}
+
+/* Ensure SVG icons in buttons are properly colored */
+[data-theme="dark"] .correct-btn svg,
+[data-theme="dark"] .incorrect-btn svg,
+[data-theme="dark"] .close-modal svg,
+[data-theme="dark"] .settings-btn svg {
+    stroke: white;
+}
+
+/* Make sure all text in dark mode is white */
+[data-theme="dark"] {
+    color: white;
+}
+
+[data-theme="dark"] .modal-header h3,
+[data-theme="dark"] .setting-group h4,
+[data-theme="dark"] .theme-option span,
+[data-theme="dark"] .reset-btn,
+[data-theme="dark"] .reset-completed-btn {
+    color: white;
+}
+
+
+/* Add this to your existing media queries */
+@media (max-width: 640px) {
+    .flashcard {
+        padding-bottom: 75%; /* Slightly taller aspect ratio for mobile */
+    }
+    
+    .response-buttons {
+        gap: 0.5rem;
+    }
+    
+    .correct-btn, .incorrect-btn {
+        padding: 0.5rem;
+        font-size: 0.75rem;
+    }
+}
+
+/* Add this for tablet sizes */
+@media (min-width: 641px) and (max-width: 1023px) {
+    .flashcard-container {
+        max-width: 700px; /* Slightly larger than mobile but smaller than desktop */
+    }
+}
+
+
+/* Update button text colors for both modes */
+.correct-btn,
+.incorrect-btn,
+.reset-btn,
+.reset-completed-btn {
+    color: black; /* Default light mode color */
+}
+
+[data-theme="dark"] .correct-btn,
+[data-theme="dark"] .incorrect-btn,
+[data-theme="dark"] .reset-btn,
+[data-theme="dark"] .reset-completed-btn {
+    color: white; /* Dark mode color */
+}
+
+/* Ensure SVG icons match the text color */
+.correct-btn svg,
+.incorrect-btn svg,
+.close-modal svg,
+.settings-btn svg {
+    stroke: black; /* Light mode SVG color */
+}
+
+[data-theme="dark"] .correct-btn svg,
+[data-theme="dark"] .incorrect-btn svg,
+[data-theme="dark"] .close-modal svg,
+[data-theme="dark"] .settings-btn svg {
+    stroke: white; /* Dark mode SVG color */
+}
+
+/* Make sure all text in buttons is visible */
+button {
+    color: inherit; /* Inherits from parent color */
+}
+
+/* Explicitly set modal button colors */
+.modal-body button {
+    color: black;
+}
+
+[data-theme="dark"] .modal-body button {
+    color: white;
+}

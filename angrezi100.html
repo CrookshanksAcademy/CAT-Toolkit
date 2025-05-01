@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,13 +44,13 @@
             --base-font-size: 1rem;
         }
 
-        *{
+        * {
             -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
 
         .dark-mode {
@@ -71,14 +72,14 @@
         .font-large {
             --base-font-size: 1.125rem;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }
-        
+
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
@@ -87,41 +88,41 @@
             line-height: 1.6;
             font-size: var(--base-font-size);
         }
-        
+
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 1rem;
         }
-        
+
         .settings-icon {
             cursor: pointer;
             font-size: 1.2rem;
         }
-        
+
         .container {
             max-width: 800px;
             margin: 0 auto;
         }
-        
+
         header {
             text-align: center;
             margin-bottom: 2rem;
         }
-        
+
         h1 {
             font-size: 2rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
             letter-spacing: -0.5px;
         }
-        
+
         .subtitle {
             color: #777;
             margin-bottom: 2rem;
         }
-        
+
         .progress-container {
             width: 100%;
             height: 6px;
@@ -130,62 +131,62 @@
             border-radius: 3px;
             overflow: hidden;
         }
-        
+
         .progress-bar {
             height: 100%;
             background-color: green;
             width: 0%;
             transition: width 0.5s var(--ease);
         }
-        
+
         table {
             width: 100%;
             border-collapse: collapse;
         }
-        
+
         th {
             text-align: left;
             padding: 1rem;
             border-bottom: 2px solid black;
             font-weight: 500;
         }
-        
+
         td {
             padding: 1rem;
             border-bottom: 1px solid #eee;
         }
-        
+
         .day-cell {
             font-weight: 500;
             width: 15%;
         }
-        
+
         .link-cell {
             position: relative;
         }
-        
+
         .link-cell a {
             color: var(--text-color);
             text-decoration: none;
             border-bottom: 1px solid transparent;
             transition: border-color 0.3s var(--ease);
         }
-        
+
         .link-cell a:hover {
             border-bottom: 1px solid var(--text-color);
         }
-        
+
         .completed-cell {
             text-align: center;
             width: 15%;
         }
-        
+
         .bookmark-star {
             color: gold;
             margin-left: 5px;
             font-size: 0.9em;
         }
-        
+
         input[type="checkbox"] {
             -webkit-appearance: none;
             appearance: none;
@@ -197,11 +198,11 @@
             position: relative;
             transition: all 0.2s var(--ease);
         }
-        
+
         input[type="checkbox"]:checked {
             background-color: var(--text-color);
         }
-        
+
         input[type="checkbox"]:checked::after {
             content: "✓";
             position: absolute;
@@ -211,7 +212,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
         }
-        
+
         /* Settings Modal */
         .modal {
             display: none;
@@ -225,7 +226,7 @@
             justify-content: center;
             align-items: center;
         }
-        
+
         .modal-content {
             background-color: var(--bg-color);
             padding: 2rem;
@@ -234,19 +235,19 @@
             max-width: 400px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
         }
-        
+
         .modal-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 1.5rem;
         }
-        
+
         .modal-title {
             font-size: 1.5rem;
             font-weight: 600;
         }
-        
+
         .close-modal {
             background: none;
             border: none;
@@ -254,47 +255,47 @@
             cursor: pointer;
             color: var(--text-color);
         }
-        
+
         .setting-group {
             margin-bottom: 1.5rem;
         }
-        
+
         .setting-label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 500;
         }
-        
+
         .font-size-controls {
             display: flex;
             gap: 0.5rem;
         }
-        
+
         .font-size-btn {
             padding: 0.5rem 1rem;
             background: var(--footer-bg);
             border: 1px solid var(--border-color);
             cursor: pointer;
         }
-        
+
         .font-size-btn.active {
             background: var(--text-color);
             color: var(--bg-color);
         }
-        
+
         .toggle-switch {
             position: relative;
             display: inline-block;
             width: 50px;
             height: 24px;
         }
-        
+
         .toggle-switch input {
             opacity: 0;
             width: 0;
             height: 0;
         }
-        
+
         .slider {
             position: absolute;
             cursor: pointer;
@@ -306,7 +307,7 @@
             transition: .4s;
             border-radius: 24px;
         }
-        
+
         .slider:before {
             position: absolute;
             content: "";
@@ -318,43 +319,44 @@
             transition: .4s;
             border-radius: 50%;
         }
-        
-        input:checked + .slider {
+
+        input:checked+.slider {
             background-color: #2196F3;
         }
-        
-        input:checked + .slider:before {
+
+        input:checked+.slider:before {
             transform: translateX(26px);
         }
-        
+
         .modal-footer {
             display: flex;
             justify-content: flex-end;
             gap: 1rem;
             margin-top: 2rem;
         }
-        
+
         .modal-btn {
             padding: 0.5rem 1rem;
             border: none;
             border-radius: 4px;
             cursor: pointer;
         }
-        
+
         .save-btn {
             background-color: var(--text-color);
             color: var(--bg-color);
         }
-        
+
         @media (max-width: 640px) {
             body {
                 padding: 1.5rem;
             }
-            
-            th, td {
+
+            th,
+            td {
                 padding: 0.75rem 0.5rem;
             }
-            
+
             .day-cell {
                 width: 20%;
             }
@@ -363,13 +365,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body>
     <div class="container">
         <div class="header-container">
             <div></div> <!-- Empty div for spacing -->
             <i class="fas fa-cog settings-icon" id="settings-icon"></i>
         </div>
-        
+
         <header>
             <h1>Angrezi-100 Challenge</h1>
             <p class="subtitle">Daily Reading Comprehensions for the CAT Exam.</p>
@@ -377,7 +380,7 @@
                 <div class="progress-bar" id="progress-bar"></div>
             </div>
         </header>
-        
+
         <table>
             <thead>
                 <tr>
@@ -399,7 +402,7 @@
                 <div class="modal-title">Settings</div>
                 <button class="close-modal" id="close-modal">&times;</button>
             </div>
-            
+
             <div class="setting-group">
                 <label class="setting-label">Font Size</label>
                 <div class="font-size-controls">
@@ -408,7 +411,7 @@
                     <button class="font-size-btn" data-size="large">Large</button>
                 </div>
             </div>
-            
+
             <div class="setting-group">
                 <label class="setting-label">Dark Mode</label>
                 <label class="toggle-switch">
@@ -416,7 +419,7 @@
                     <span class="slider"></span>
                 </label>
             </div>
-            
+
             <div class="modal-footer">
                 <button class="modal-btn save-btn" id="save-settings-btn">Save Settings</button>
             </div>
@@ -442,12 +445,12 @@
 
         // Get title from mockList or use default
         function getTitle(day) {
-            return mockList[day-1] || "Coming Soon";
+            return mockList[day - 1] || "Coming Soon";
         }
 
         // Get link from linkList or use default
         function getLink(day) {
-            return linkList[day-1] || `./angrezi100/${day}.html`;
+            return linkList[day - 1] || `./angrezi100/${day}.html`;
         }
 
         // Initialize local storage if empty
@@ -485,7 +488,7 @@
         // Load settings from local storage
         function loadSettings() {
             const settings = JSON.parse(localStorage.getItem('quizSettings')) || {};
-            
+
             // Apply font size
             if (settings.fontSize) {
                 setFontSize(settings.fontSize);
@@ -496,24 +499,24 @@
                     }
                 });
             }
-            
+
             // Apply dark mode
             if (settings.darkMode) {
                 document.body.classList.add('dark-mode');
                 document.getElementById('dark-mode-toggle').checked = true;
             }
         }
-        
+
         // Save settings to local storage
         function saveSettings() {
             const fontSize = document.querySelector('.font-size-btn.active').dataset.size;
             const darkMode = document.getElementById('dark-mode-toggle').checked;
-            
+
             localStorage.setItem('quizSettings', JSON.stringify({
                 fontSize,
                 darkMode
             }));
-            
+
             // Apply settings immediately
             setFontSize(fontSize);
             if (darkMode) {
@@ -522,12 +525,12 @@
                 document.body.classList.remove('dark-mode');
             }
         }
-        
+
         // Set font size by adding class to body
         function setFontSize(size) {
             // Remove all font size classes first
             document.body.classList.remove('font-small', 'font-medium', 'font-large');
-            
+
             // Add the selected class
             document.body.classList.add(`font-${size}`);
         }
@@ -552,11 +555,11 @@
 
             // Add event listeners to checkboxes
             document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-                checkbox.addEventListener('change', function() {
+                checkbox.addEventListener('change', function () {
                     const day = parseInt(this.dataset.day);
                     const progress = loadProgress();
                     const itemIndex = progress.findIndex(item => item.day === day);
-                    
+
                     if (itemIndex !== -1) {
                         progress[itemIndex].completed = this.checked;
                         saveProgress(progress);
@@ -568,28 +571,28 @@
             document.querySelectorAll('.link-cell').forEach(cell => {
                 let tapCount = 0;
                 let tapTimer = null;
-                
-                cell.addEventListener('click', function(e) {
+
+                cell.addEventListener('click', function (e) {
                     // Prevent triggering on star click
                     if (e.target.classList.contains('bookmark-star')) {
                         return;
                     }
-                    
+
                     tapCount++;
-                    
+
                     if (tapCount === 1) {
-                        tapTimer = setTimeout(function() {
+                        tapTimer = setTimeout(function () {
                             tapCount = 0;
                         }, 300); // 300ms delay to detect double tap
                     } else if (tapCount === 2) {
                         clearTimeout(tapTimer);
                         tapCount = 0;
-                        
+
                         // Double tap detected - toggle bookmark
                         const day = parseInt(this.closest('tr').querySelector('input[type="checkbox"]').dataset.day);
                         const progress = loadProgress();
                         const itemIndex = progress.findIndex(item => item.day === day);
-                        
+
                         if (itemIndex !== -1) {
                             progress[itemIndex].bookmarked = !progress[itemIndex].bookmarked;
                             saveProgress(progress);
@@ -601,38 +604,38 @@
         }
 
         // Initialize the page
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             initializeStorage();
             renderTable();
             updateProgressBar();
             loadSettings();
-            
+
             // Settings icon click
-            document.getElementById('settings-icon').addEventListener('click', function() {
+            document.getElementById('settings-icon').addEventListener('click', function () {
                 document.getElementById('settings-modal').style.display = 'flex';
             });
-            
+
             // Close modal
-            document.getElementById('close-modal').addEventListener('click', function() {
+            document.getElementById('close-modal').addEventListener('click', function () {
                 document.getElementById('settings-modal').style.display = 'none';
             });
-            
+
             // Font size buttons
             document.querySelectorAll('.font-size-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
+                btn.addEventListener('click', function () {
                     document.querySelectorAll('.font-size-btn').forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
                 });
             });
-            
+
             // Save settings
-            document.getElementById('save-settings-btn').addEventListener('click', function() {
+            document.getElementById('save-settings-btn').addEventListener('click', function () {
                 saveSettings();
                 document.getElementById('settings-modal').style.display = 'none';
             });
-            
+
             // Close modal when clicking outside
-            window.addEventListener('click', function(e) {
+            window.addEventListener('click', function (e) {
                 if (e.target === document.getElementById('settings-modal')) {
                     document.getElementById('settings-modal').style.display = 'none';
                 }
@@ -640,4 +643,5 @@
         });
     </script>
 </body>
+
 </html>
