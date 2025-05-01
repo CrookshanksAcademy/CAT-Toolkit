@@ -17,8 +17,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Flashcard data
     const totalFlashcards = 200;
     let flashcards = [];
+    let masteredFlashcards = [];
     let currentFlashcardIndex = 0;
-    let completedCount = 0;
+    let masteredCount = 0;
     
     // Update theme colors
     function updateThemeColors(theme) {
@@ -37,25 +38,30 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize flashcards
     function initializeFlashcards() {
         flashcards = [];
+        masteredFlashcards = [];
         for (let i = 1; i <= totalFlashcards; i++) {
             flashcards.push({
                 id: i,
                 question: `https://picsum.photos/800/450?random=${i}&q=1`,
                 answer: `https://picsum.photos/800/450?random=${i}&a=1`,
-                mastered: false
             });
         }
         currentFlashcardIndex = 0;
-        completedCount = 0;
+        masteredCount = 0;
         updateProgress();
         loadCurrentFlashcard();
     }
     
     // Load current flashcard
     function loadCurrentFlashcard() {
-        if (currentFlashcardIndex >= flashcards.length) {
+        if (flashcards.length === 0) {
             showCompletionModal();
             return;
+        }
+        
+        // If we've reached the end of current deck, reset index
+        if (currentFlashcardIndex >= flashcards.length) {
+            currentFlashcardIndex = 0;
         }
         
         const currentCard = flashcards[currentFlashcardIndex];
@@ -94,24 +100,24 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Update progress display
     function updateProgress() {
-        const remaining = flashcards.length - completedCount;
-        progressDisplay.textContent = `${completedCount}/${remaining}`;
+        progressDisplay.textContent = `${masteredCount}/${totalFlashcards}`;
     }
     
     // Handle correct answer
     function handleCorrect() {
-        flashcards[currentFlashcardIndex].mastered = true;
-        completedCount++;
-        
-        // Remove mastered card from array
-        flashcards.splice(currentFlashcardIndex, 1);
-        
-        if (currentFlashcardIndex >= flashcards.length) {
-            currentFlashcardIndex = 0;
-        }
+        // Move current card to mastered list
+        const masteredCard = flashcards.splice(currentFlashcardIndex, 1)[0];
+        masteredFlashcards.push(masteredCard);
+        masteredCount++;
         
         updateProgress();
-        loadCurrentFlashcard();
+        
+        if (flashcards.length === 0) {
+            showCompletionModal();
+        } else {
+            // Don't increment index since we removed current card
+            loadCurrentFlashcard();
+        }
     }
     
     // Handle incorrect answer
@@ -120,34 +126,36 @@ document.addEventListener('DOMContentLoaded', function() {
         const incorrectCard = flashcards.splice(currentFlashcardIndex, 1)[0];
         flashcards.push(incorrectCard);
         
-        if (currentFlashcardIndex >= flashcards.length) {
-            currentFlashcardIndex = 0;
-        }
-        
-        updateProgress();
+        // Don't increment index since we moved current card to end
         loadCurrentFlashcard();
     }
     
-    // Show completion modal
+    // Show completion modal (non-dismissable)
     function showCompletionModal() {
         completionModal.style.display = 'flex';
+        // Hide the flashcard and buttons
+        document.querySelector('.flashcard-container').style.display = 'none';
     }
     
     // Event listeners
     flashcard.addEventListener('click', function() {
-        if (!flashcard.classList.contains('flipped')) {
+        if (!flashcard.classList.contains('flipped') && flashcards.length > 0) {
             flashcard.classList.add('flipped');
         }
     });
     
     correctBtn.addEventListener('click', function(e) {
         e.stopPropagation();
-        handleCorrect();
+        if (flashcards.length > 0) {
+            handleCorrect();
+        }
     });
     
     incorrectBtn.addEventListener('click', function(e) {
         e.stopPropagation();
-        handleIncorrect();
+        if (flashcards.length > 0) {
+            handleIncorrect();
+        }
     });
     
     settingsBtn.addEventListener('click', function() {
@@ -161,10 +169,15 @@ document.addEventListener('DOMContentLoaded', function() {
     resetBtn.addEventListener('click', function() {
         initializeFlashcards();
         settingsModal.style.display = 'none';
+        // Show the flashcard and buttons again
+        document.querySelector('.flashcard-container').style.display = 'block';
+        completionModal.style.display = 'none';
     });
     
     resetCompletedBtn.addEventListener('click', function() {
         initializeFlashcards();
+        // Show the flashcard and buttons again
+        document.querySelector('.flashcard-container').style.display = 'block';
         completionModal.style.display = 'none';
     });
     
@@ -178,14 +191,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Close modals when clicking outside
+    // Close settings modal when clicking outside
     window.addEventListener('click', function(e) {
         if (e.target === settingsModal) {
             settingsModal.style.display = 'none';
         }
-        if (e.target === completionModal) {
-            completionModal.style.display = 'none';
-        }
+        // Don't allow closing completion modal by clicking outside
     });
     
     // Initialize
